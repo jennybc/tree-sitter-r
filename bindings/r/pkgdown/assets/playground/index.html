@@ -107,18 +107,31 @@
         // Load the R language WASM file
         console.log('Web-tree-sitter initialized, loading R grammar...');
 
-        // Try different possible paths to find the WASM file
+        // Use the same CDN approach as we do for the main tree-sitter WASM file
+        console.log('Loading R grammar from CDN...');
+        
         let rLanguage;
         try {
-          rLanguage = await TreeSitter.Language.load('assets/tree-sitter-r.wasm');
-          console.log('Loaded R grammar from assets/tree-sitter-r.wasm');
-        } catch (e1) {
+          // Use unpkg CDN to load the @davisvaughan/tree-sitter-r package's WASM file
+          // This avoids path issues completely by using an absolute URL
+          const wasmUrl = 'https://unpkg.com/@davisvaughan/tree-sitter-r@latest/tree-sitter-r.wasm';
+          console.log('Attempting to load grammar from CDN:', wasmUrl);
+          rLanguage = await TreeSitter.Language.load(wasmUrl);
+          console.log('Successfully loaded R grammar from CDN');
+        } catch (e) {
+          console.error('Failed to load grammar from CDN:', e);
+          
+          // Fallback to local paths if CDN fails
           try {
-            rLanguage = await TreeSitter.Language.load('playground/assets/tree-sitter-r.wasm');
-            console.log('Loaded R grammar from playground/assets/tree-sitter-r.wasm');
+            // Try relative paths as fallback
+            const localWasmPath = 'assets/tree-sitter-r.wasm';
+            console.log('Attempting to load grammar locally:', localWasmPath);
+            rLanguage = await TreeSitter.Language.load(localWasmPath);
+            console.log('Successfully loaded R grammar from local path');
           } catch (e2) {
-            console.error('Failed to load grammar from standard paths, trying absolute path');
-            rLanguage = await TreeSitter.Language.load('/playground/assets/tree-sitter-r.wasm');
+            console.error('All loading attempts failed:', e2);
+            displayError('Failed to load R grammar. Check console for details.');
+            throw e2;
           }
         }
 
