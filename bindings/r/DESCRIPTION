@@ -17,6 +17,8 @@ BugReports: https://github.com/r-lib/tree-sitter-r/issues
 Depends:
     R (>= 4.3.0)
 Suggests:
+    knitr,
+    quarto,
     testthat (>= 3.0.0),
     treesitter
 Config/build/bootstrap: TRUE
@@ -25,3 +27,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+VignetteBuilder: quarto

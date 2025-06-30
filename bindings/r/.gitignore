@@ -4,3 +4,5 @@ src/tree_sitter/
 src/parser.c
 src/scanner.c
 docs
+inst/doc
+**/.quarto/

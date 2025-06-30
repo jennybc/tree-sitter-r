@@ -15,3 +15,5 @@
 ^[\.]?air\.toml$
 ^\.vscode$
 ^playground$
+^vignettes/\.quarto$
+^vignettes/*_files$
