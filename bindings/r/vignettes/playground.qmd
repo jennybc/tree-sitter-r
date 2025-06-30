@@ -375,9 +375,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     queryCheckbox.addEventListener('change', function() {
-      document.getElementById('query-container').style.visibility =
-        this.checked ? 'visible' : 'hidden';
+      document.querySelector('.query-section').style.display =
+        this.checked ? 'flex' : 'none';
     });
+    
+    // Initially hide the query section (to match official playground)
+    document.querySelector('.query-section').style.display = 'none';
 
     // Initial parse
     parseCode();
