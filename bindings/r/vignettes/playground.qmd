@@ -605,6 +605,7 @@ function handleCursorMovement() {
 1. Type or paste R code in the left panel
 2. View the syntax tree in the right panel
 3. Click on a node in the tree to highlight the corresponding code
+4. Place your cursor in the code to highlight the corresponding node in the tree
 
 ### Advanced Features
 
