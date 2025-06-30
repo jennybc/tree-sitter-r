@@ -36,6 +36,7 @@ You can:
 - Enter R code in the editor on the left
 - See the parsed syntax tree on the right
 - Click on tree nodes to highlight the corresponding code
+- Click in the code to highlight the corresponding node
 - Use the query functionality to experiment with tree-sitter queries
 
 ```{=html}
