@@ -283,6 +283,8 @@ let loggingCheckbox, anonymousNodesCheckbox, queryCheckbox, accessibilityCheckbo
 // Libraries we depend on
 // The tree-sitter objects we'll use
 let parser, rLanguage;
+// Global logging flag
+let loggingEnabled = false;
 
 // Wait for page to load then initialize the playground
 document.addEventListener('DOMContentLoaded', async function() {
@@ -367,7 +369,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Set up checkbox event handlers
     loggingCheckbox.addEventListener('change', function() {
-      console.log('Logging ' + (this.checked ? 'enabled' : 'disabled'));
+      loggingEnabled = this.checked;
+      console.log('Logging ' + (loggingEnabled ? 'enabled' : 'disabled'));
     });
 
     anonymousNodesCheckbox.addEventListener('change', function() {
