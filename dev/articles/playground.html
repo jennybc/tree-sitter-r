@@ -65,7 +65,7 @@
 
 
 
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/tree-sitter-r/blob/main/vignettes/playground.qmd" class="external-link"><code>vignettes/playground.qmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/tree-sitter-r/blob/main/vignettes/articles/playground.qmd" class="external-link"><code>vignettes/articles/playground.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
     </div>
 
@@ -318,6 +318,8 @@ let loggingCheckbox, anonymousNodesCheckbox, queryCheckbox, accessibilityCheckbo
 // Libraries we depend on
 // The tree-sitter objects we'll use
 let parser, rLanguage;
+// Global logging flag
+let loggingEnabled = false;
 
 // Wait for page to load then initialize the playground
 document.addEventListener('DOMContentLoaded', async function() {
@@ -402,7 +404,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Set up checkbox event handlers
     loggingCheckbox.addEventListener('change', function() {
-      console.log('Logging ' + (this.checked ? 'enabled' : 'disabled'));
+      loggingEnabled = this.checked;
+      console.log('Logging ' + (loggingEnabled ? 'enabled' : 'disabled'));
     });
 
     anonymousNodesCheckbox.addEventListener('change', function() {
@@ -410,9 +413,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     queryCheckbox.addEventListener('change', function() {
-      document.getElementById('query-container').style.visibility =
-        this.checked ? 'visible' : 'hidden';
+      document.querySelector('.query-section').style.display =
+        this.checked ? 'flex' : 'none';
     });
+
+    // Initially hide the query section (to match official playground)
+    document.querySelector('.query-section').style.display = 'none';
 
     // Initial parse
     parseCode();
