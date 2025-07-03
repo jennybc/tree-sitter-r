@@ -27,17 +27,6 @@ format:
 library(treesitter.r)
 ```
 
-## Tree-sitter R Grammar Playground
-
-This interactive playground allows you to write R code and see how the tree-sitter parser analyzes its syntax structure. The tree-sitter grammar for R enables precise parsing of R code for various applications like syntax highlighting, code navigation, and static analysis.
-
-You can:
-
-- Enter R code in the editor on the left
-- See the parsed syntax tree on the right
-- Click on tree nodes to highlight the corresponding code
-- Click in the code to highlight the corresponding node
-- Use the query functionality to experiment with tree-sitter queries
 
 ```{=html}
 <div class="playground">
@@ -381,7 +370,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       document.querySelector('.query-section').style.display =
         this.checked ? 'flex' : 'none';
     });
-    
+
     // Initially hide the query section (to match official playground)
     document.querySelector('.query-section').style.display = 'none';
 
@@ -605,18 +594,21 @@ function handleCursorMovement() {
 </script>
 ```
 
-## How to Use the Playground
+## Basic usage
 
-### Basic Usage
+This interactive playground allows you to write R code and see how the tree-sitter parser analyzes its syntax structure.
+The tree-sitter grammar for R enables precise parsing of R code for various applications like syntax highlighting, code navigation, and static analysis.
 
-1. Type or paste R code in the left panel
-2. View the syntax tree in the right panel
-3. Click on a node in the tree to highlight the corresponding code
-4. Place your cursor in the code to highlight the corresponding node in the tree
+You can:
 
-### Advanced Features
+- Enter R code in the editor on the left
+- See the parsed syntax tree on the right
+- Click in the code to highlight the corresponding node
+- Click on a tree node to highlight the corresponding code
 
-#### Query Mode
+## Advanced Features
+
+### Query Mode
 
 Toggle on the "query" checkbox to use tree-sitter queries. This allows you to write pattern-matching expressions to find nodes in your code.
 
@@ -634,9 +626,13 @@ This will match all function definitions in your code.
 
 This will match binary expressions where the left operand is the identifier "x".
 
-#### Anonymous Nodes
+### Anonymous Nodes
 
 Toggle on "show anonymous nodes" to display all nodes in the tree, including unnamed ones like operators and punctuation.
+
+### Unimplemented features
+
+*The "log" and "accessibility" checkboxes may not be functioning here (yet), but have just been ported over from the analogous page in the documentation for tree-sitter itself: <https://tree-sitter.github.io/tree-sitter/7-playground.html>. For that matter, the "query" functionality may also not really be working (yet).*
 
 ## About Tree-sitter
 
